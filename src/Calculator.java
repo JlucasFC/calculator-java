@@ -77,7 +77,25 @@ public class Calculator {
           JButton button = (JButton) e.getSource();
           String buttonValue = button.getText();
           if (Arrays.asList(rightSymbols).contains(buttonValue)) {
-            if (buttonValue == "=") {
+            if (buttonValue == "=" && displayLabel.getText() != "0") {
+              B = displayLabel.getText();
+              double numA = Double.parseDouble(A);
+              double numB = Double.parseDouble(B);
+              switch (operator) {
+                case "+" -> {
+                  displayLabel.setText(removeDecimal(numA + numB));
+                }
+                case "-" -> {
+                  displayLabel.setText(removeDecimal(numA - numB));
+                }
+                case "×" -> {
+                  displayLabel.setText(removeDecimal(numA * numB));
+                }
+                case "÷" -> {
+                  displayLabel.setText(removeDecimal(numA / numB));
+                }
+
+              }
 
             } else if ("÷×-+".contains(buttonValue)) {
               if (operator == null) {
